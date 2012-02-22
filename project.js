@@ -297,6 +297,71 @@ normA = function(A,p){
 	}
 };
 
+//Norm of a matrix or array
+normA = function(A,p){
+	if (A instanceof Array) {
+		var a = 0;
+		for (x=0; x<A.length; x++) {
+			a += Math.pow(A[x],p);
+		}
+		return Math.pow(a,(1.0/p));
+	}
+};
+
+normM = function(A,p){
+	var a=0;
+	var x=[];
+	var y=0;
+	var z=[];
+	for (r=0;r<A.rows;r++){
+			for (c=0;c<A.cols;c++){
+				x.push(Math.pow(A.data[r][c],p));
+			}
+			y += normA(x,p);
+			z.push(normA(x,p));	
+	}
+	if (A.rows===1 || A.cols===1){
+		return Math.pow(y,(1.0/p));
+	}
+	else if (p===1){
+		return Math.max(z);
+	}
+	else{
+		throw "Not implemented error";
+	}
+};
+
+//Condition number
+condition_number = function(f){
+	return normM(f)*normM(1/f);
+};
+
+//Exp of a number or matrix
+exp = function(x, ap, rp, ns){
+	if (x instanceOf number){
+		return Math.exp(x);
+	}
+	else{
+		t = s = Matrix.identity(x.cols);
+		for k in range(1,ns):
+			t = t*x/k
+			s = s+t
+			if(norm(t)<Math.max(ap,norm(s)*rp)){
+				return s;
+			}
+		throw "Arithmetic Error - no convergence";
+	}
+};
+
+//least squares fit
+fit_least_squares(pts,f):
+	eval_fitting_function(f,c,x):
+		if (f.length===1){
+			return c*f[0](x)
+		}
+		else{
+			return sum(
+
 // Runs the Cholesky decomposition on the array A
 Cholesky = function(A) {
 	if (!A.is_almost_symmetric()) {
