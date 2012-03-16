@@ -266,6 +266,19 @@ test4 = function() {
         var jac_g = jacobian(g, x);
         console.log("Jacobian of g at x:");
         print_matrix(jac_g);
+        
+       //Testing Solve Newton Multi
+    	x = [0,0,1]
+
+    	//var snm = solve_newton_multi(f,x);
+    	//console.log("Solve Newton Multi: x = ");
+    	//print_matric(snm);
+    
+    	//Testing Optimize Newton Multi
+    	//var onm = optimize_newton_multi(f,x);
+    	//console.log("Optimize Newton Multi: x = ");
+    	//print_matrix(onm);     
+        
     }
     catch(err) {
         alert(err);
