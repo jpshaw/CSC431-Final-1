@@ -85,7 +85,7 @@ Matrix.prototype.neg = function() {
         }
     }
     return n;
-}
+};
 
 // Adds matrix m1 to this matrix
 Matrix.prototype.add = function(m1) {
@@ -248,4 +248,4 @@ Matrix.prototype.transpose = function() {
     }
 
     return m;
-}
+};
